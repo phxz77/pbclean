@@ -1,0 +1,16 @@
+{
+  "name": "PB Clean",
+  "short_name": "PB Clean",
+  "description": "Limpeza pós-incêndio, pós-obra e conservação em São Paulo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0A1A3A",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

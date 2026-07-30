@@ -1,0 +1,476 @@
+{
+  "designSystem": {
+    "name": "PB Clean Design Language",
+    "version": "1.0.0",
+    "description": "Sistema de design premium inspirado em interfaces minimalistas com estética glassmorphism, adaptado para uma empresa especializada em limpeza pós-incêndio, restauração e descontaminação.",
+
+    "brand": {
+      "personality": [
+        "Premium",
+        "Confiável",
+        "Tecnológica",
+        "Profissional",
+        "Moderna",
+        "Minimalista",
+        "Segura",
+        "Elegante"
+      ],
+
+      "emotionalGoals": [
+        "Transmitir confiança imediatamente",
+        "Reduzir ansiedade do cliente",
+        "Demonstrar alto padrão de qualidade",
+        "Passar sensação de limpeza absoluta",
+        "Mostrar organização e precisão"
+      ]
+    },
+
+    "visualStyle": {
+      "overallLook": "Luxury Minimalism + Modern Glassmorphism",
+
+      "characteristics": [
+        "Muito espaço em branco",
+        "Poucos elementos por seção",
+        "Hierarquia extremamente clara",
+        "Bordas suaves",
+        "Elementos flutuantes",
+        "Leve transparência",
+        "Gradientes discretos",
+        "Interface limpa",
+        "Pouco ruído visual"
+      ],
+
+      "keywords": [
+        "clean",
+        "premium",
+        "minimal",
+        "soft",
+        "glass",
+        "professional",
+        "high-end",
+        "editorial"
+      ]
+    },
+
+    "colorSystem": {
+
+      "primary": "#0D6EFD",
+
+      "secondary": "#35B5FF",
+
+      "accent": "#4FD1C5",
+
+      "dark": "#0F172A",
+
+      "light": "#F8FAFC",
+
+      "background": "#FFFFFF",
+
+      "surface": "#F4F8FC",
+
+      "success": "#16A34A",
+
+      "warning": "#F59E0B",
+
+      "danger": "#DC2626",
+
+      "neutralScale": {
+        "50": "#F8FAFC",
+        "100": "#F1F5F9",
+        "200": "#E2E8F0",
+        "300": "#CBD5E1",
+        "400": "#94A3B8",
+        "500": "#64748B",
+        "600": "#475569",
+        "700": "#334155",
+        "800": "#1E293B",
+        "900": "#0F172A"
+      },
+
+      "gradients": [
+        {
+          "name": "Hero",
+          "colors": [
+            "#0D6EFD",
+            "#35B5FF"
+          ]
+        },
+        {
+          "name": "Glass",
+          "colors": [
+            "rgba(255,255,255,0.25)",
+            "rgba(255,255,255,0.05)"
+          ]
+        }
+      ]
+    },
+
+    "typography": {
+
+      "style": "Editorial + Sans Serif",
+
+      "recommendedFonts": [
+        "Manrope",
+        "Inter",
+        "General Sans",
+        "Satoshi"
+      ],
+
+      "scale": {
+
+        "hero": {
+          "size": "64px",
+          "weight": 700,
+          "lineHeight": 1.1
+        },
+
+        "h1": {
+          "size": "52px",
+          "weight": 700
+        },
+
+        "h2": {
+          "size": "40px",
+          "weight": 700
+        },
+
+        "h3": {
+          "size": "28px",
+          "weight": 600
+        },
+
+        "body": {
+          "size": "18px",
+          "weight": 400
+        },
+
+        "small": {
+          "size": "15px",
+          "weight": 400
+        },
+
+        "caption": {
+          "size": "13px"
+        }
+      }
+    },
+
+    "spacing": {
+
+      "base": 8,
+
+      "sectionPadding": "120px",
+
+      "containerWidth": "1280px",
+
+      "grid": {
+        "columns": 12,
+        "gutter": 24
+      },
+
+      "borderRadius": {
+
+        "small": "12px",
+
+        "medium": "20px",
+
+        "large": "32px",
+
+        "pill": "999px"
+      }
+    },
+
+    "shadows": {
+
+      "soft": "0 10px 30px rgba(15,23,42,.08)",
+
+      "medium": "0 25px 50px rgba(15,23,42,.12)",
+
+      "glass": "0 8px 40px rgba(255,255,255,.12)"
+    },
+
+    "glassmorphism": {
+
+      "enabled": true,
+
+      "background": "rgba(255,255,255,0.18)",
+
+      "blur": "18px",
+
+      "border": "1px solid rgba(255,255,255,.25)"
+    },
+
+    "buttons": {
+
+      "style": "Rounded",
+
+      "radius": "999px",
+
+      "primary": {
+        "background": "#0D6EFD",
+        "text": "#FFFFFF",
+        "hover": "#0057D8"
+      },
+
+      "secondary": {
+        "background": "transparent",
+        "border": "1px solid #CBD5E1",
+        "text": "#0F172A"
+      }
+    },
+
+    "cards": {
+
+      "appearance": [
+        "Floating",
+        "Rounded",
+        "Large border radius",
+        "Soft shadows",
+        "Minimal content"
+      ],
+
+      "layout": {
+        "padding": "32px",
+        "gap": "24px"
+      }
+    },
+
+    "sections": [
+
+      {
+        "name": "Hero",
+
+        "layout": "Fullscreen",
+
+        "elements": [
+          "Imagem ampla",
+          "Título grande",
+          "Subtítulo",
+          "CTA principal",
+          "Floating glass panel"
+        ]
+      },
+
+      {
+        "name": "Credibility",
+
+        "layout": "Horizontal Cards",
+
+        "elements": [
+          "Números",
+          "Ícones",
+          "Certificações",
+          "Anos de experiência"
+        ]
+      },
+
+      {
+        "name": "Services",
+
+        "layout": "Grid",
+
+        "cards": {
+          "columnsDesktop": 3,
+          "columnsTablet": 2,
+          "columnsMobile": 1
+        }
+      },
+
+      {
+        "name": "BeforeAfter",
+
+        "layout": "Large Showcase",
+
+        "interaction": "Slider"
+      },
+
+      {
+        "name": "Process",
+
+        "layout": "Timeline",
+
+        "steps": 5
+      },
+
+      {
+        "name": "Testimonials",
+
+        "layout": "Cards Carousel"
+      },
+
+      {
+        "name": "FAQ",
+
+        "layout": "Accordion"
+      },
+
+      {
+        "name": "CTA",
+
+        "layout": "Centered"
+      }
+    ],
+
+    "components": [
+
+      "Navbar transparente",
+
+      "Glass Hero",
+
+      "Rounded Cards",
+
+      "Statistic Cards",
+
+      "Icon Boxes",
+
+      "Timeline",
+
+      "Accordion",
+
+      "Testimonial Cards",
+
+      "Sticky CTA",
+
+      "Footer Minimal"
+    ],
+
+    "icons": {
+
+      "style": "Outlined",
+
+      "stroke": 1.75,
+
+      "corner": "Rounded"
+    },
+
+    "imagery": {
+
+      "style": [
+        "Fotografia profissional",
+        "Ambientes restaurados",
+        "Equipamentos modernos",
+        "Equipe uniformizada",
+        "Luz natural",
+        "Alto contraste",
+        "Pouca saturação"
+      ],
+
+      "avoid": [
+        "Fotos genéricas",
+        "Excesso de filtros",
+        "Poluição visual",
+        "Colagens"
+      ]
+    },
+
+    "animation": {
+
+      "style": "Subtle",
+
+      "duration": "300ms",
+
+      "easing": "ease-out",
+
+      "effects": [
+        "Fade Up",
+        "Blur In",
+        "Scale 0.98 → 1",
+        "Parallax leve",
+        "Hover Lift",
+        "Glass Glow"
+      ]
+    },
+
+    "interaction": {
+
+      "hover": [
+        "Elevação de cards",
+        "Sombra suave",
+        "Escala 1.02",
+        "Mudança discreta de cor"
+      ],
+
+      "scroll": [
+        "Fade",
+        "Reveal",
+        "Sticky Sections"
+      ]
+    },
+
+    "layoutPatterns": {
+
+      "alternatingSections": true,
+
+      "largeVisualBreaks": true,
+
+      "sectionRhythm": [
+        "Hero",
+        "Conteúdo",
+        "Imagem",
+        "Conteúdo",
+        "CTA",
+        "Imagem"
+      ]
+    },
+
+    "uxPrinciples": [
+
+      "Uma ação principal por seção",
+
+      "Leitura extremamente simples",
+
+      "Escaneabilidade",
+
+      "Contraste alto",
+
+      "Poucos elementos competindo",
+
+      "Muito respiro",
+
+      "Conversão acima da decoração"
+    ],
+
+    "responsive": {
+
+      "mobileFirst": true,
+
+      "breakpoints": {
+
+        "mobile": 480,
+
+        "tablet": 768,
+
+        "desktop": 1024,
+
+        "wide": 1440
+      }
+    },
+
+    "accessibility": {
+
+      "contrast": "WCAG AA",
+
+      "focusStates": true,
+
+      "keyboardNavigation": true,
+
+      "minimumTouchTarget": "44px"
+    },
+
+    "cursorInstructions": [
+      "Sempre utilizar bastante espaço em branco.",
+      "Evitar layouts congestionados.",
+      "Priorizar cartões grandes com cantos arredondados.",
+      "Usar glassmorphism apenas como detalhe elegante.",
+      "Todos os CTAs devem ser muito visíveis.",
+      "Criar ritmo visual alternando texto e blocos destacados.",
+      "Manter aparência premium em todas as páginas.",
+      "Utilizar azul como cor dominante da marca.",
+      "Utilizar micro animações suaves.",
+      "Jamais utilizar sombras pesadas.",
+      "Jamais utilizar cores extremamente saturadas.",
+      "Todo componente deve parecer respirável e moderno.",
+      "A interface deve transmitir limpeza, precisão e confiança."
+    ]
+  }
+}
