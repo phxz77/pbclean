@@ -7,7 +7,7 @@ export const SITE = {
   locale: "pt_BR",
   phone: "+55 11 94768-3103",
   phoneRaw: "5511947683103",
-  email: "contato@pbclean.com.br",
+  email: "contato@pbcleanlimpeza.com.br",
   instagram: "https://www.instagram.com/pb_clean",
   address: {
     street: "Av. Paulista, 2300 - Bela Vista",

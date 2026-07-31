@@ -7,7 +7,7 @@ export const siteConfig = {
   phone: "(11) 94768-3103",
   phoneRaw: "5511947683103",
   phones: ["(11) 3980-9605", "(11) 94768-3103", "(11) 99559-5800"],
-  email: "contato@pbclean.com.br",
+  email: "contato@pbcleanlimpeza.com.br",
   instagram: "https://www.instagram.com/pb_clean/",
   instagramLabel: "@pb_clean",
   address: {
