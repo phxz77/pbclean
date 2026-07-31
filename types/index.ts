@@ -18,14 +18,6 @@ export interface FAQItem {
   answer: string;
 }
 
-export interface GalleryItem {
-  id: number;
-  title: string;
-  category: string;
-  before: string;
-  after: string;
-}
-
 export interface ContactFormData {
   name: string;
   email: string;

@@ -21,6 +21,26 @@ export default function CompanyPage() {
       <PageHero {...companyContent.hero} current="Empresa" />
 
       <section className="corp-section">
+        <div className="corp-container corp-team">
+          <div>
+            <SectionIntro {...companyContent.team} />
+            <ul>{companyContent.structure.map((item) => <li key={item}><BadgeCheck />{item}</li>)}</ul>
+          </div>
+          <div className="corp-team__visual">
+            <iframe
+              className="absolute inset-0 h-full w-full border-0"
+              src="https://www.youtube.com/embed/nPE77LnHDjw"
+              title="Vídeo institucional da PB Clean"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="corp-section">
         <div className="corp-container corp-company-intro">
           <Reveal className="corp-company-intro__image">
             <Image src="/post-construction-team.png" alt="Estrutura profissional da PB Clean" fill sizes="(max-width: 900px) 100vw, 45vw" />
@@ -60,18 +80,6 @@ export default function CompanyPage() {
                 <div><h3>{item.title}</h3><p>{item.text}</p></div>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="corp-section">
-        <div className="corp-container corp-team">
-          <div>
-            <SectionIntro {...companyContent.team} />
-            <ul>{companyContent.structure.map((item) => <li key={item}><BadgeCheck />{item}</li>)}</ul>
-          </div>
-          <div className="corp-team__visual">
-            <Image src="/hero-fire-restoration.png" alt="Profissional PB Clean em operação técnica" fill sizes="(max-width: 900px) 100vw, 45vw" />
           </div>
         </div>
       </section>

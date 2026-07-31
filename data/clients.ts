@@ -9,12 +9,36 @@ export const clientSegments = [
   { name: "Residencial", mark: "RE" },
 ] as const;
 
+export const featuredClients = [
+  "Extra",
+  "Braido Ceceli",
+  "Drogarias Onofre",
+  "Carioca Construtora",
+  "Brasanitas",
+  "SC Group",
+  "New Age Tour Operator",
+  "Camargo Corrêa Desenvolvimento Imobiliário",
+  "Bon Grillê",
+  "Amor aos Pedaços",
+  "Renaissance Hotels",
+  "Pão de Açúcar",
+  "Vivenda do Camarão",
+  "Intermédica",
+  "Subway",
+  "Etna",
+  "Terdiman Arquitetos Associados",
+  "Odebrecht",
+  "Walmart",
+  "Via Uno",
+  "Carrefour",
+] as const;
+
 export const clientPageContent = {
   hero: {
     eyebrow: "Clientes",
-    title: "Confiança construída em diferentes segmentos.",
+    title: "Grandes marcas fazem parte da nossa história.",
     description:
-      "Estrutura preparada para atender operações de diferentes portes, necessidades e níveis de complexidade.",
+      "Experiência, estrutura e cuidado para atender operações de grande porte com a mesma atenção dedicada a cada detalhe.",
   },
   criteria: [
     "Escopo alinhado às necessidades do cliente",
@@ -23,5 +47,5 @@ export const clientPageContent = {
     "Comunicação durante todas as etapas",
   ],
   note:
-    "Por confidencialidade, alguns projetos e marcas atendidas são apresentados somente em reuniões comerciais.",
+    "Uma seleção de empresas atendidas pela PB Clean em diferentes projetos e períodos da nossa trajetória.",
 } as const;

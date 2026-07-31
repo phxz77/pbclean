@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { GalleryExplorer } from "@/components/gallery/gallery-explorer";
+import { Carousel } from "@/components/ui/3d-carousel";
 import { CtaBand } from "@/components/shared/cta-band";
 import { PageHero } from "@/components/shared/page-hero";
-import { galleryItems } from "@/data/gallery";
+import { galleryImages } from "@/data/gallery";
 
 export const metadata: Metadata = {
   title: "Galeria | PB Clean",
   description:
-    "Veja comparativos antes e depois de serviços especializados realizados pela PB Clean.",
+    "Veja registros de serviços especializados realizados pela equipe da PB Clean.",
 };
 
 export default function GalleryPage() {
@@ -15,13 +15,13 @@ export default function GalleryPage() {
     <div className="corp-site">
       <PageHero
         eyebrow="Resultados em imagem"
-        title="Transformações que demonstram método e cuidado"
-        description="Explore projetos por categoria, compare antes e depois e amplie os resultados."
+        title="Nosso cuidado em cada ambiente"
+        description="Explore registros reais dos serviços da PB Clean e amplie cada imagem para ver os detalhes."
         current="Galeria"
       />
       <section className="corp-section">
         <div className="corp-container">
-          <GalleryExplorer items={galleryItems} />
+          <Carousel cards={galleryImages} />
         </div>
       </section>
       <CtaBand title="Quer transformar seu ambiente também?" />

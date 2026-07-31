@@ -41,13 +41,9 @@ export type Service = {
   featured?: boolean;
 };
 
-export type GalleryItem = {
-  id: string;
-  title: string;
-  category: "Pós Incêndio" | "Pós Obra" | "Conservação" | "Sanitização";
-  before: string;
-  after: string;
-  description: string;
+export type GalleryImage = {
+  src: string;
+  alt: string;
 };
 
 export type CaseStudy = {

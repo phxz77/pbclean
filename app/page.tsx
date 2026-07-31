@@ -17,7 +17,6 @@ import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { homeContent } from "@/data/home";
 import { companyContent } from "@/data/company";
 import { featuredServices } from "@/data/services";
-import { galleryItems } from "@/data/gallery";
 import { cases } from "@/data/cases";
 import { clientSegments } from "@/data/clients";
 import { faqItems } from "@/data/faq";
@@ -155,9 +154,9 @@ export default function HomePage() {
             <Link href={`/cases/${cases[0].slug}`} className="corp-text-link">Conhecer este case <ArrowRight /></Link>
           </div>
           <BeforeAfter
-            before={galleryItems[0].before}
-            after={galleryItems[0].after}
-            alt={galleryItems[0].title}
+            before={cases[0].images[0]}
+            after={cases[0].images[1]}
+            alt={cases[0].title}
           />
         </div>
       </section>

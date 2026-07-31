@@ -1,52 +1,76 @@
-import type { GalleryItem } from "@/types/content";
+import type { GalleryImage } from "@/types/content";
 
-export const galleryItems: GalleryItem[] = [
+export const galleryImages: GalleryImage[] = [
   {
-    id: "galeria-01",
-    title: "Recuperação de dormitório após incêndio",
-    category: "Pós Incêndio",
-    before: "/case-fire-bedroom-before.jpeg",
-    after: "/case-fire-bedroom-after.jpeg",
-    description: "Remoção de fuligem e resíduos, limpeza técnica do mobiliário e recuperação visual das superfícies.",
+    src: "/images/galeria/pb-clean-galeria-01.webp",
+    alt: "Ambiente residencial antes do serviço de limpeza",
   },
   {
-    id: "galeria-02",
-    title: "Entrega final de reforma",
-    category: "Pós Obra",
-    before: "/gallery-2-before.jpg",
-    after: "/post-construction-team.png",
-    description: "Limpeza pesada e fina para valorizar acabamentos e liberar o ambiente para uso.",
+    src: "/images/galeria/pb-clean-galeria-02.webp",
+    alt: "Cozinha antes do serviço de limpeza especializada",
   },
   {
-    id: "galeria-03",
-    title: "Conservação de áreas comuns",
-    category: "Conservação",
-    before: "/gallery-3-before.jpg",
-    after: "/industrial-cleaning-team.png",
-    description: "Rotina planejada para preservar áreas de circulação e convivência.",
+    src: "/images/galeria/pb-clean-galeria-03.webp",
+    alt: "Profissional da PB Clean realizando limpeza de teto",
   },
   {
-    id: "galeria-04",
-    title: "Tratamento e neutralização",
-    category: "Sanitização",
-    before: "/gallery-1-before.jpg",
-    after: "/ozone-sanitization-room.png",
-    description: "Protocolo complementar para tratamento do ambiente e neutralização de odores.",
+    src: "/images/galeria/pb-clean-galeria-04.webp",
+    alt: "Equipe da PB Clean realizando limpeza residencial",
   },
   {
-    id: "galeria-05",
-    title: "Limpeza fina de acabamentos",
-    category: "Pós Obra",
-    before: "/gallery-3-before.jpg",
-    after: "/fine-finishing-cleaning.png",
-    description: "Detalhamento de superfícies, vidros e elementos recém-instalados.",
+    src: "/images/galeria/pb-clean-galeria-05.webp",
+    alt: "Corredor após o serviço de limpeza",
   },
   {
-    id: "galeria-06",
-    title: "Ambiente corporativo preservado",
-    category: "Conservação",
-    before: "/gallery-2-before.jpg",
-    after: "/corporate-conservation-team.png",
-    description: "Execução compatível com a rotina do negócio e o fluxo de pessoas.",
+    src: "/images/galeria/pb-clean-galeria-06.webp",
+    alt: "Cozinha antes do processo de limpeza",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-07.webp",
+    alt: "Sala após limpeza profissional",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-08.webp",
+    alt: "Ambiente residencial finalizado após limpeza",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-09.webp",
+    alt: "Banheiro antes do serviço de limpeza",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-10.webp",
+    alt: "Quarto após limpeza profissional",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-11.webp",
+    alt: "Sala de jantar preparada para limpeza",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-12.webp",
+    alt: "Sala com sinais de sujeira antes da limpeza",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-13.webp",
+    alt: "Quarto antes do serviço de limpeza",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-14.webp",
+    alt: "Cozinha antes da limpeza especializada",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-15.webp",
+    alt: "Ambiente após remoção de sujeira e resíduos",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-16.webp",
+    alt: "Sala antes da limpeza profissional",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-17.webp",
+    alt: "Área interna antes do serviço de limpeza",
+  },
+  {
+    src: "/images/galeria/pb-clean-galeria-18.webp",
+    alt: "Área externa residencial antes da limpeza",
   },
 ];

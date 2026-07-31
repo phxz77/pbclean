@@ -11,7 +11,7 @@ export { clientPageContent, clientSegments } from "@/data/clients";
 export { companyContent } from "@/data/company";
 export { contactContent } from "@/data/contact";
 export { faqCategories, faqItems } from "@/data/faq";
-export { galleryItems } from "@/data/gallery";
+export { galleryImages } from "@/data/gallery";
 export { homeContent } from "@/data/home";
 export { primaryNavigation } from "@/data/navigation";
 export { featuredServices, getService, services } from "@/data/services";
