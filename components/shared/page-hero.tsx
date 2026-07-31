@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
+import { Reveal } from "@/components/shared/reveal";
 
 export function PageHero({
   eyebrow,
@@ -14,7 +15,7 @@ export function PageHero({
 }) {
   return (
     <section className="corp-page-hero">
-      <div className="corp-container">
+      <Reveal className="corp-container" eager>
         <div className="corp-breadcrumb">
           <Link href="/" aria-label="Home"><Home /></Link>
           <ChevronRight />
@@ -23,7 +24,7 @@ export function PageHero({
         <p className="corp-eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
         <p className="corp-page-hero__description">{description}</p>
-      </div>
+      </Reveal>
     </section>
   );
 }

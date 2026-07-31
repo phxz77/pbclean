@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, domMax, LazyMotion, m, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, MoveHorizontal, X } from "lucide-react";
 import type { GalleryImage } from "@/types/content";
 
@@ -85,7 +85,7 @@ export function Carousel({ cards }: CarouselProps) {
   if (!cards.length) return null;
 
   return (
-    <>
+    <LazyMotion features={domMax}>
       <div
         ref={carouselRef}
         className="relative h-[440px] w-full overflow-hidden rounded-[24px] border border-white/10 bg-[#001a38] shadow-[0_28px_80px_rgba(0,26,56,0.18)] [perspective:1400px] sm:h-[570px] lg:h-[640px]"
@@ -100,7 +100,7 @@ export function Carousel({ cards }: CarouselProps) {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#075ee8]/20 to-transparent" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#001226] via-[#001226]/75 to-transparent" />
 
-        <motion.div
+        <m.div
           className="absolute inset-0 cursor-grab active:cursor-grabbing [transform-style:preserve-3d]"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
@@ -123,15 +123,17 @@ export function Carousel({ cards }: CarouselProps) {
             const isVisible = distance <= 3;
             const isActive = offset === 0;
 
+            if (!isVisible) return null;
+
             return (
-              <motion.button
+              <m.button
                 key={image.src}
                 type="button"
-                className="absolute left-1/2 top-1/2 select-none overflow-hidden rounded-[18px] border bg-[#071a31] shadow-2xl outline-none focus-visible:ring-4 focus-visible:ring-[#5da2ff]/70"
+                className="group absolute left-1/2 top-1/2 select-none overflow-hidden rounded-[18px] border bg-[#071a31] shadow-2xl outline-none focus-visible:ring-4 focus-visible:ring-[#5da2ff]/70"
                 style={{
                   width: dimensions.cardWidth,
                   aspectRatio: "3 / 4",
-                  pointerEvents: isVisible ? "auto" : "none",
+                  pointerEvents: "auto",
                 }}
                 initial={false}
                 animate={{
@@ -139,7 +141,7 @@ export function Carousel({ cards }: CarouselProps) {
                   y: "-50%",
                   rotateY: offset === 0 ? 0 : offset < 0 ? 48 : -48,
                   scale: isActive ? 1 : Math.max(0.72, 1 - distance * 0.11),
-                  opacity: isVisible ? Math.max(0.16, 1 - distance * 0.27) : 0,
+                  opacity: Math.max(0.16, 1 - distance * 0.27),
                   zIndex: cards.length - distance,
                   borderColor: isActive
                     ? "rgba(93, 162, 255, 0.9)"
@@ -156,7 +158,7 @@ export function Carousel({ cards }: CarouselProps) {
                   setSelectedImage(image);
                 }}
                 aria-label={`Ampliar imagem ${index + 1}: ${image.alt}`}
-                aria-hidden={!isVisible}
+                aria-hidden={false}
                 tabIndex={isActive ? 0 : -1}
               >
                 <Image
@@ -164,8 +166,8 @@ export function Carousel({ cards }: CarouselProps) {
                   alt={image.alt}
                   fill
                   sizes="(max-width: 640px) 63vw, (max-width: 1024px) 34vw, 330px"
-                  className="object-cover"
-                  loading="lazy"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025] motion-reduce:transition-none"
+                  loading={isActive ? "eager" : "lazy"}
                   quality={86}
                   draggable={false}
                 />
@@ -178,10 +180,10 @@ export function Carousel({ cards }: CarouselProps) {
                 <span className="absolute bottom-4 left-4 rounded-full border border-white/20 bg-[#001226]/75 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-              </motion.button>
+              </m.button>
             );
           })}
-        </motion.div>
+        </m.div>
 
         <button
           type="button"
@@ -219,7 +221,7 @@ export function Carousel({ cards }: CarouselProps) {
 
       <AnimatePresence>
         {selectedImage && (
-          <motion.div
+          <m.div
             className="fixed inset-0 z-[200] grid place-items-center bg-[#000d1e]/95 p-4 backdrop-blur-md sm:p-8"
             role="dialog"
             aria-modal="true"
@@ -232,7 +234,7 @@ export function Carousel({ cards }: CarouselProps) {
               if (event.target === event.currentTarget) setSelectedImage(null);
             }}
           >
-            <motion.div
+            <m.div
               className="relative h-[calc(100dvh-2rem)] w-full max-w-[960px] sm:h-[calc(100dvh-4rem)]"
               initial={reduceMotion ? false : { opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -247,7 +249,7 @@ export function Carousel({ cards }: CarouselProps) {
                 className="object-contain"
                 quality={92}
               />
-            </motion.div>
+            </m.div>
             <button
               ref={closeButtonRef}
               type="button"
@@ -257,9 +259,9 @@ export function Carousel({ cards }: CarouselProps) {
             >
               <X className="h-6 w-6" />
             </button>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </>
+    </LazyMotion>
   );
 }

@@ -3,6 +3,7 @@ import { Clock3, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
 import { PageHero } from "@/components/shared/page-hero";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
+import { Reveal } from "@/components/shared/reveal";
 import { contactContent } from "@/data/contact";
 import { siteConfig } from "@/config/site";
 import { mailUrl, phoneUrl, whatsappUrl } from "@/lib/contact";
@@ -19,7 +20,7 @@ export default function ContactPage() {
     <div className="corp-site">
       <PageHero {...contactContent.hero} current="Contato" />
       <section className="corp-section">
-        <div className="corp-container corp-contact-layout">
+        <Reveal className="corp-container corp-contact-layout">
           <div className="corp-contact-info">
             <p className="corp-eyebrow">Canais de atendimento</p>
             <h2>Escolha a forma mais conveniente para conversar</h2>
@@ -35,7 +36,7 @@ export default function ContactPage() {
             </div>
           </div>
           <ContactForm />
-        </div>
+        </Reveal>
       </section>
       <section className="corp-map">
         <iframe

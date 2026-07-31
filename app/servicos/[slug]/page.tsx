@@ -9,6 +9,8 @@ import { FAQExplorer } from "@/components/faq/faq-explorer";
 import { ServiceCard } from "@/components/services/service-card";
 import { ContentIcon } from "@/components/shared/content-icon";
 import { CtaBand } from "@/components/shared/cta-band";
+import { Reveal } from "@/components/shared/reveal";
+import { StaggerArticle, StaggerGroup, StaggerItem } from "@/components/shared/stagger";
 import { services, getService } from "@/data/services";
 
 export function generateStaticParams() {
@@ -64,17 +66,17 @@ export default async function ServiceDetailPage({
       </section>
 
       <section className="corp-section">
-        <div className="corp-container corp-service-copy">
+        <Reveal className="corp-container corp-service-copy">
           <div>
             <p className="corp-eyebrow">Sobre o serviço</p>
             <h2>Uma solução técnica, segura e dimensionada</h2>
           </div>
           <div>{service.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="corp-section corp-section--soft">
-        <div className="corp-container corp-benefit-columns">
+        <Reveal className="corp-container corp-benefit-columns">
           <div>
             <p className="corp-eyebrow">Benefícios</p>
             <h2>O que este serviço entrega</h2>
@@ -85,49 +87,49 @@ export default async function ServiceDetailPage({
             <h2>Por que contar com especialistas</h2>
             <ul>{service.differentials.map((item) => <li key={item}><BadgeCheck />{item}</li>)}</ul>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="corp-section corp-section--navy">
         <div className="corp-container">
           <p className="corp-eyebrow">Como funciona</p>
           <h2 className="corp-light-title">Um processo claro do diagnóstico à entrega</h2>
-          <div className="corp-process-grid">
-            {service.process.map((step, index) => <article key={step}><span>{String(index + 1).padStart(2, "0")}</span><h3>{step}</h3></article>)}
-          </div>
+          <StaggerGroup className="corp-process-grid">
+            {service.process.map((step, index) => <StaggerArticle key={step}><span>{String(index + 1).padStart(2, "0")}</span><h3>{step}</h3></StaggerArticle>)}
+          </StaggerGroup>
         </div>
       </section>
 
       <section className="corp-section">
-        <div className="corp-container corp-service-gallery">
+        <Reveal className="corp-container corp-service-gallery">
           <div>
             <p className="corp-eyebrow">Galeria</p>
             <h2>Compare o antes e depois</h2>
             <p>Arraste o controle para visualizar a transformação do ambiente.</p>
           </div>
           <BeforeAfter before={service.gallery[0].before} after={service.gallery[0].after} alt={service.gallery[0].alt} />
-        </div>
+        </Reveal>
       </section>
 
       <section className="corp-section corp-section--soft">
-        <div className="corp-container corp-service-faq">
+        <Reveal className="corp-container corp-service-faq">
           <div><p className="corp-eyebrow">Perguntas frequentes</p><h2>Dúvidas sobre {service.title.toLocaleLowerCase("pt-BR")}</h2></div>
           <FAQExplorer compact items={service.faq} />
-        </div>
+        </Reveal>
       </section>
 
       <section id="orcamento" className="corp-section">
-        <div className="corp-container corp-form-layout">
+        <Reveal className="corp-container corp-form-layout">
           <div><p className="corp-eyebrow">Fale com a equipe</p><h2>Receba uma avaliação para seu ambiente</h2><p>Informe o cenário, a localização e o prazo desejado. Nossa equipe organizará o próximo passo.</p></div>
           <ContactForm compact />
-        </div>
+        </Reveal>
       </section>
 
       <section className="corp-section corp-section--soft">
         <div className="corp-container">
           <p className="corp-eyebrow">Serviços relacionados</p>
           <h2 className="corp-section-title">Outras soluções que podem ajudar</h2>
-          <div className="corp-service-grid">{related.map((item) => <ServiceCard key={item.slug} service={item} />)}</div>
+          <StaggerGroup className="corp-service-grid">{related.map((item) => <StaggerItem className="h-full [&>*]:h-full" key={item.slug}><ServiceCard service={item} /></StaggerItem>)}</StaggerGroup>
         </div>
       </section>
       <CtaBand />

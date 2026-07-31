@@ -12,6 +12,8 @@ import { FAQExplorer } from "@/components/faq/faq-explorer";
 import { ServiceCard } from "@/components/services/service-card";
 import { ContentIcon } from "@/components/shared/content-icon";
 import { Reveal } from "@/components/shared/reveal";
+import { AnimatedCounter } from "@/components/shared/animated-counter";
+import { StaggerArticle, StaggerGroup, StaggerItem } from "@/components/shared/stagger";
 import { SectionIntro } from "@/components/shared/section-intro";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { homeContent } from "@/data/home";
@@ -27,8 +29,18 @@ export default function HomePage() {
   return (
     <div className="corp-site">
       <section className="corp-home-hero">
+        <Image
+          className="corp-home-hero__background"
+          src="/hero-fire-restoration-pbclean.png"
+          alt=""
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          quality={78}
+        />
         <div className="corp-container corp-home-hero__inner">
-          <Reveal className="corp-home-hero__copy">
+          <Reveal className="corp-home-hero__copy" eager>
             <p className="corp-eyebrow">{homeContent.hero.eyebrow}</p>
             <h1>
               {homeContent.hero.title.map((line) => (
@@ -56,11 +68,11 @@ export default function HomePage() {
       </section>
 
       <section className="corp-stats">
-        <div className="corp-container">
+        <StaggerGroup className="corp-container">
           {homeContent.stats.map((stat) => (
-            <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>
+            <StaggerItem key={stat.label}><AnimatedCounter value={stat.value} /><span>{stat.label}</span></StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </section>
 
       <section className="corp-section">
@@ -103,46 +115,50 @@ export default function HomePage() {
 
       <section className="corp-section corp-segments">
         <div className="corp-container">
-          <SectionIntro
-            eyebrow="Atuação multissegmento"
-            title="Estrutura para diferentes ambientes e operações"
-            description="A mesma exigência técnica, adaptada à realidade de cada cliente."
-          />
-          <div className="corp-segment-grid">
+          <Reveal>
+            <SectionIntro
+              eyebrow="Atuação multissegmento"
+              title="Estrutura para diferentes ambientes e operações"
+              description="A mesma exigência técnica, adaptada à realidade de cada cliente."
+            />
+          </Reveal>
+          <StaggerGroup className="corp-segment-grid">
             {homeContent.segments.map((segment) => (
-              <article key={segment.title}>
+              <StaggerArticle key={segment.title}>
                 <ContentIcon name={segment.icon} />
                 <h3>{segment.title}</h3>
                 <p>{segment.text}</p>
-              </article>
+              </StaggerArticle>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
       <section className="corp-section corp-section--navy">
         <div className="corp-container">
-          <SectionIntro
-            light
-            eyebrow="Processo de trabalho"
-            title="Clareza do primeiro contato à entrega"
-            description="Um fluxo simples, documentável e preparado para projetos de diferentes escalas."
-          />
-          <div className="corp-process-grid">
+          <Reveal>
+            <SectionIntro
+              light
+              eyebrow="Processo de trabalho"
+              title="Clareza do primeiro contato à entrega"
+              description="Um fluxo simples, documentável e preparado para projetos de diferentes escalas."
+            />
+          </Reveal>
+          <StaggerGroup className="corp-process-grid">
             {homeContent.process.map((step) => (
-              <article key={step.number}>
+              <StaggerArticle key={step.number}>
                 <span>{step.number}</span>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
-              </article>
+              </StaggerArticle>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
       <section className="corp-section">
         <div className="corp-container corp-case-feature">
-          <div>
+          <Reveal>
             <SectionIntro
               eyebrow="Resultados reais"
               title={cases[0].title}
@@ -152,37 +168,43 @@ export default function HomePage() {
               {cases[0].metrics.map((metric) => <div key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></div>)}
             </div>
             <Link href={`/cases/${cases[0].slug}`} className="corp-text-link">Conhecer este case <ArrowRight /></Link>
-          </div>
-          <BeforeAfter
-            before={cases[0].images[0]}
-            after={cases[0].images[1]}
-            alt={cases[0].title}
-          />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <BeforeAfter
+              before={cases[0].images[0]}
+              after={cases[0].images[1]}
+              alt={cases[0].title}
+            />
+          </Reveal>
         </div>
       </section>
 
       <section className="corp-section corp-section--soft">
         <div className="corp-container">
-          <SectionIntro
-            centered
-            eyebrow="Confiança em diferentes setores"
-            title="Estrutura preparada para grandes responsabilidades"
-            description="Atendimento para construção civil, indústrias, condomínios, varejo, escritórios e residências."
-          />
-          <div className="corp-logo-cloud">
-            {clientSegments.map((client) => <div key={client.name}><strong>{client.mark}</strong><span>{client.name}</span></div>)}
-          </div>
+          <Reveal>
+            <SectionIntro
+              centered
+              eyebrow="Confiança em diferentes setores"
+              title="Estrutura preparada para grandes responsabilidades"
+              description="Atendimento para construção civil, indústrias, condomínios, varejo, escritórios e residências."
+            />
+          </Reveal>
+          <StaggerGroup className="corp-logo-cloud">
+            {clientSegments.map((client) => <StaggerItem key={client.name}><strong>{client.mark}</strong><span>{client.name}</span></StaggerItem>)}
+          </StaggerGroup>
           <div className="corp-section-action"><Link href="/clientes" className="corp-text-link">Conheça nossa atuação <ArrowRight /></Link></div>
         </div>
       </section>
 
       <section className="corp-section">
         <div className="corp-container corp-home-faq">
-          <SectionIntro
-            eyebrow="Perguntas frequentes"
-            title="Informação para decidir com segurança"
-            description="Reunimos respostas objetivas sobre orçamento, atendimento e execução."
-          />
+          <Reveal>
+            <SectionIntro
+              eyebrow="Perguntas frequentes"
+              title="Informação para decidir com segurança"
+              description="Reunimos respostas objetivas sobre orçamento, atendimento e execução."
+            />
+          </Reveal>
           <FAQExplorer compact items={faqItems.slice(0, 6)} />
           <Link href="/faq" className="corp-button corp-button--navy">Ver todas as perguntas</Link>
         </div>

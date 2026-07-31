@@ -4,7 +4,9 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Search } from "lucide-react";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import type { BlogPost } from "@/types/content";
+import { staggerContainerVariants, staggerItemVariants } from "@/lib/motion";
 
 export function BlogExplorer({
   posts,
@@ -15,6 +17,7 @@ export function BlogExplorer({
 }) {
   const [category, setCategory] = useState("Todos");
   const [query, setQuery] = useState("");
+  const reduceMotion = useReducedMotion();
   const filtered = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase("pt-BR");
     return posts.filter((post) => {
@@ -44,9 +47,22 @@ export function BlogExplorer({
           ))}
         </div>
       </div>
-      <div className="corp-blog-grid">
-        {filtered.map((post) => (
-          <article key={post.slug} className="corp-blog-card">
+      <m.div
+        className="corp-blog-grid"
+        variants={staggerContainerVariants}
+        initial={reduceMotion ? false : "hidden"}
+        animate="visible"
+      >
+        <AnimatePresence initial={false}>
+          {filtered.map((post) => (
+          <m.article
+            key={post.slug}
+            className="corp-blog-card"
+            variants={staggerItemVariants}
+            initial={reduceMotion ? false : "hidden"}
+            animate="visible"
+            exit={reduceMotion ? undefined : { opacity: 0, y: 8 }}
+          >
             <Link href={`/blog/${post.slug}`} className="corp-blog-card__image">
               <Image src={post.cover} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
             </Link>
@@ -56,9 +72,10 @@ export function BlogExplorer({
               <span>{post.excerpt}</span>
               <Link href={`/blog/${post.slug}`} className="corp-text-link">Ler artigo <ArrowUpRight /></Link>
             </div>
-          </article>
-        ))}
-      </div>
+          </m.article>
+          ))}
+        </AnimatePresence>
+      </m.div>
       {filtered.length === 0 && <p className="corp-empty">Nenhum artigo encontrado.</p>}
     </>
   );

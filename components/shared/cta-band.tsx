@@ -3,6 +3,7 @@ import { Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { phoneUrl, whatsappUrl } from "@/lib/contact";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
+import { Reveal } from "@/components/shared/reveal";
 
 export function CtaBand({
   eyebrow = "Vamos conversar",
@@ -15,7 +16,7 @@ export function CtaBand({
 }) {
   return (
     <section className="corp-cta">
-      <div className="corp-container corp-cta__inner">
+      <Reveal className="corp-container corp-cta__inner">
         <div>
           <p>{eyebrow}</p>
           <h2>{title}</h2>
@@ -31,7 +32,7 @@ export function CtaBand({
           </Link>
           <a href={phoneUrl()} className="corp-cta__phone"><Phone />{siteConfig.phone}</a>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

@@ -2,7 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import type { FAQItem } from "@/types/content";
+import { motionEase } from "@/lib/motion";
 
 export function FAQExplorer({
   items,
@@ -16,6 +18,7 @@ export function FAQExplorer({
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("Todos");
   const [openId, setOpenId] = useState(items[0]?.id ?? "");
+  const reduceMotion = useReducedMotion();
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase("pt-BR");
@@ -73,9 +76,22 @@ export function FAQExplorer({
                 <span><small>{item.category}</small>{item.question}</span>
                 <ChevronDown />
               </button>
-              <div className="corp-accordion__answer">
-                <p>{item.answer}</p>
-              </div>
+              <AnimatePresence initial={false}>
+                {open && (
+                  <m.div
+                    className="corp-accordion__answer"
+                    initial={reduceMotion ? false : { height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.28,
+                      ease: motionEase,
+                    }}
+                  >
+                    <p>{item.answer}</p>
+                  </m.div>
+                )}
+              </AnimatePresence>
             </article>
           );
         })}

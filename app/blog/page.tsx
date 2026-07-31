@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BlogExplorer } from "@/components/blog/blog-explorer";
 import { CtaBand } from "@/components/shared/cta-band";
 import { PageHero } from "@/components/shared/page-hero";
+import { Reveal } from "@/components/shared/reveal";
 import { blogCategories, blogPosts } from "@/data/blog";
 
 export const metadata: Metadata = {
@@ -20,9 +21,9 @@ export default function BlogPage() {
         current="Blog"
       />
       <section className="corp-section">
-        <div className="corp-container">
+        <Reveal className="corp-container">
           <BlogExplorer posts={blogPosts} categories={blogCategories} />
-        </div>
+        </Reveal>
       </section>
       <CtaBand />
     </div>

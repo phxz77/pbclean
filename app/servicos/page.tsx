@@ -3,6 +3,8 @@ import { ServiceCard } from "@/components/services/service-card";
 import { CtaBand } from "@/components/shared/cta-band";
 import { PageHero } from "@/components/shared/page-hero";
 import { SectionIntro } from "@/components/shared/section-intro";
+import { Reveal } from "@/components/shared/reveal";
+import { StaggerArticle, StaggerGroup, StaggerItem } from "@/components/shared/stagger";
 import { services } from "@/data/services";
 import { homeContent } from "@/data/home";
 
@@ -23,22 +25,22 @@ export default function ServicesPage() {
       />
       <section className="corp-section">
         <div className="corp-container">
-          <SectionIntro
-            eyebrow="Portfólio completo"
-            title="Encontre a solução ideal para sua necessidade"
-            description="Cada serviço possui escopo personalizado e uma página completa com benefícios, processo, dúvidas e formas de contato."
-          />
-          <div className="corp-service-grid corp-service-grid--all">
-            {services.map((service) => <ServiceCard key={service.slug} service={service} />)}
-          </div>
+          <Reveal><SectionIntro
+              eyebrow="Portfólio completo"
+              title="Encontre a solução ideal para sua necessidade"
+              description="Cada serviço possui escopo personalizado e uma página completa com benefícios, processo, dúvidas e formas de contato."
+          /></Reveal>
+          <StaggerGroup className="corp-service-grid corp-service-grid--all">
+            {services.map((service) => <StaggerItem className="h-full [&>*]:h-full" key={service.slug}><ServiceCard service={service} /></StaggerItem>)}
+          </StaggerGroup>
         </div>
       </section>
       <section className="corp-section corp-section--navy">
         <div className="corp-container">
-          <SectionIntro light eyebrow="Nosso método" title="Planejamento e controle em todas as etapas" />
-          <div className="corp-process-grid">
-            {homeContent.process.map((step) => <article key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}
-          </div>
+          <Reveal><SectionIntro light eyebrow="Nosso método" title="Planejamento e controle em todas as etapas" /></Reveal>
+          <StaggerGroup className="corp-process-grid">
+            {homeContent.process.map((step) => <StaggerArticle key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></StaggerArticle>)}
+          </StaggerGroup>
         </div>
       </section>
       <CtaBand />

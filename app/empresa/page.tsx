@@ -8,6 +8,8 @@ import { CtaBand } from "@/components/shared/cta-band";
 import { PageHero } from "@/components/shared/page-hero";
 import { Reveal } from "@/components/shared/reveal";
 import { SectionIntro } from "@/components/shared/section-intro";
+import { AnimatedCounter } from "@/components/shared/animated-counter";
+import { StaggerArticle, StaggerGroup } from "@/components/shared/stagger";
 
 export const metadata: Metadata = {
   title: "Empresa | PB Clean",
@@ -21,7 +23,7 @@ export default function CompanyPage() {
       <PageHero {...companyContent.hero} current="Empresa" />
 
       <section className="corp-section">
-        <div className="corp-container corp-team">
+        <Reveal className="corp-container corp-team">
           <div>
             <SectionIntro {...companyContent.team} />
             <ul>{companyContent.structure.map((item) => <li key={item}><BadgeCheck />{item}</li>)}</ul>
@@ -37,7 +39,7 @@ export default function CompanyPage() {
               allowFullScreen
             />
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="corp-section">
@@ -49,7 +51,7 @@ export default function CompanyPage() {
             <SectionIntro eyebrow="Quem somos" title={companyContent.introduction.title} />
             {companyContent.introduction.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             <div className="corp-mini-stats">
-              {homeContent.stats.slice(0, 3).map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}
+              {homeContent.stats.slice(0, 3).map((stat) => <div key={stat.label}><AnimatedCounter value={stat.value} /><span>{stat.label}</span></div>)}
             </div>
           </Reveal>
         </div>
@@ -57,30 +59,30 @@ export default function CompanyPage() {
 
       <section className="corp-section corp-section--soft">
         <div className="corp-container">
-          <SectionIntro centered eyebrow="Nossa essência" title="Princípios que orientam cada entrega" />
-          <div className="corp-principles">
+          <Reveal><SectionIntro centered eyebrow="Nossa essência" title="Princípios que orientam cada entrega" /></Reveal>
+          <StaggerGroup className="corp-principles">
             {companyContent.principles.map((principle) => (
-              <article key={principle.title}>
+              <StaggerArticle key={principle.title}>
                 <ContentIcon name={principle.icon} />
                 <h2>{principle.title}</h2>
                 <p>{principle.text}</p>
-              </article>
+              </StaggerArticle>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
       <section className="corp-section corp-section--navy">
         <div className="corp-container">
-          <SectionIntro light eyebrow="Linha do tempo" title="Uma história construída com evolução contínua" />
-          <div className="corp-timeline">
+          <Reveal><SectionIntro light eyebrow="Linha do tempo" title="Uma história construída com evolução contínua" /></Reveal>
+          <StaggerGroup className="corp-timeline">
             {companyContent.timeline.map((item) => (
-              <article key={item.year}>
+              <StaggerArticle key={item.year}>
                 <strong>{item.year}</strong>
                 <div><h3>{item.title}</h3><p>{item.text}</p></div>
-              </article>
+              </StaggerArticle>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 

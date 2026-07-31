@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FAQExplorer } from "@/components/faq/faq-explorer";
 import { CtaBand } from "@/components/shared/cta-band";
 import { PageHero } from "@/components/shared/page-hero";
+import { Reveal } from "@/components/shared/reveal";
 import { faqCategories, faqItems } from "@/data/faq";
 
 export const metadata: Metadata = {
@@ -20,9 +21,9 @@ export default function FAQPage() {
         current="FAQ"
       />
       <section className="corp-section">
-        <div className="corp-container corp-faq-page">
+        <Reveal className="corp-container corp-faq-page">
           <FAQExplorer items={faqItems} categories={faqCategories} />
-        </div>
+        </Reveal>
       </section>
       <CtaBand title="Não encontrou a resposta que precisava?" />
     </div>

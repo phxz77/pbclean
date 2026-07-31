@@ -1096,22 +1096,32 @@ body {
   left: 0;
   height: 105px;
   color: #fff;
-  transition: height 200ms ease, background 200ms ease, box-shadow 200ms ease;
+  transition: height 240ms ease, background 240ms ease, box-shadow 240ms ease, backdrop-filter 240ms ease;
 }
 
 .corp-header.is-solid {
   position: sticky;
   height: 88px;
-  background: rgba(0, 25, 54, 0.98);
+  background: rgba(0, 25, 54, 0.94);
   box-shadow: 0 8px 30px rgba(0, 15, 34, 0.12);
+  backdrop-filter: blur(10px) saturate(125%);
+  -webkit-backdrop-filter: blur(10px) saturate(125%);
+}
+
+.corp-header.is-solid.is-scrolled {
+  background: rgba(0, 25, 54, 0.88);
+  box-shadow: 0 12px 38px rgba(0, 15, 34, 0.2);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
 }
 
 .corp-header.is-overlay.is-scrolled {
   position: fixed;
   height: 82px;
-  background: rgba(0, 25, 54, 0.96);
+  background: rgba(0, 25, 54, 0.88);
   box-shadow: 0 8px 30px rgba(0, 15, 34, 0.18);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .corp-header__inner {
@@ -1201,6 +1211,8 @@ body {
 .corp-section {
   padding: 105px 0;
   background: #fff;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
 }
 
 .corp-section--soft {
@@ -1281,17 +1293,22 @@ body {
   font-size: 13px;
   font-weight: 750;
   cursor: pointer;
-  transition: transform 180ms ease, color 180ms ease, background 180ms ease;
+  transition: transform 220ms ease, color 220ms ease, background 220ms ease, box-shadow 220ms ease;
 }
 
 .corp-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
+
+.corp-button:active { transform: translateY(-1px) scale(0.985); }
 
 .corp-button svg {
   width: 17px;
   height: 17px;
+  transition: transform 220ms ease;
 }
+
+.corp-button:hover svg { transform: translateX(2px); }
 
 .corp-button--blue {
   color: #fff;
@@ -1345,14 +1362,28 @@ body {
 .corp-home-hero {
   position: relative;
   min-height: 720px;
+  overflow: hidden;
   color: #fff;
-  background:
-    linear-gradient(90deg, rgba(0, 15, 34, 0.35), rgba(0, 15, 34, 0.04) 66%),
-    url("/hero-fire-restoration-pbclean.png") center / cover no-repeat;
+  background: #00152e;
+}
+
+.corp-home-hero__background {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.corp-home-hero::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, rgba(0, 15, 34, 0.35), rgba(0, 15, 34, 0.04) 66%);
 }
 
 .corp-home-hero::after {
   position: absolute;
+  z-index: 1;
   inset: auto 0 0;
   height: 200px;
   content: "";
@@ -1678,6 +1709,8 @@ body {
   border: 1px solid var(--corp-line);
   border-radius: 8px;
   background: #fff;
+  box-shadow: 0 8px 24px rgba(9, 35, 67, 0.035);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
 .corp-segment-grid svg,
@@ -1716,6 +1749,7 @@ body {
   min-height: 200px;
   padding: 27px 24px;
   border-left: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 220ms ease, transform 220ms ease;
 }
 
 .corp-process-grid article:last-child {
@@ -1790,7 +1824,7 @@ body {
   align-items: center;
   justify-content: center;
   border-right: 1px solid var(--corp-line);
-  transition: color 180ms ease, background 180ms ease;
+  transition: color 220ms ease, background 220ms ease, transform 220ms ease, box-shadow 220ms ease;
 }
 
 .corp-logo-cloud > div:hover {
@@ -2183,6 +2217,7 @@ body {
   border-radius: 8px;
   background: #fff;
   box-shadow: 0 12px 35px rgba(5, 30, 65, 0.07);
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
 }
 
 .corp-case-card__image {
@@ -2262,6 +2297,7 @@ body {
   display: block;
   width: 100%;
   height: auto;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .corp-client-note {
@@ -2341,6 +2377,7 @@ body {
   border: 1px solid var(--corp-line);
   border-radius: 8px;
   background: #fff;
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
 }
 
 .corp-blog-card__image { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; }
@@ -2408,6 +2445,7 @@ body {
   border: 1px solid var(--corp-line);
   border-radius: 7px;
   background: #fff;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
 }
 
 .corp-accordion article > button {
@@ -2432,10 +2470,8 @@ body {
 .corp-accordion article > button small { margin-bottom: 3px; color: var(--corp-blue); font-size: 8px; letter-spacing: 0.7px; text-transform: uppercase; }
 .corp-accordion article > button svg { width: 18px; flex: 0 0 auto; transition: transform 180ms ease; }
 .corp-accordion article.is-open > button svg { transform: rotate(180deg); }
-.corp-accordion__answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 220ms ease; }
-.corp-accordion__answer > p { min-height: 0; overflow: hidden; margin: 0; padding: 0 21px; color: var(--corp-muted); font-size: 13px; }
-.corp-accordion article.is-open .corp-accordion__answer { grid-template-rows: 1fr; }
-.corp-accordion article.is-open .corp-accordion__answer > p { padding-bottom: 22px; }
+.corp-accordion__answer { overflow: hidden; }
+.corp-accordion__answer > p { margin: 0; padding: 0 21px 22px; color: var(--corp-muted); font-size: 13px; }
 
 .corp-contact-layout {
   grid-template-columns: 0.75fr 1.25fr;
@@ -2463,6 +2499,7 @@ body {
   border-radius: 6px;
 }
 
+.corp-contact-cards a { transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
 .corp-contact-cards a:hover { border-color: rgba(7, 94, 232, 0.4); }
 .corp-contact-cards svg { width: 21px; height: 21px; color: var(--corp-blue); }
 .corp-contact-cards span { display: flex; min-width: 0; flex-direction: column; font-size: 11px; overflow-wrap: anywhere; }
@@ -2623,6 +2660,56 @@ body {
   border: 0;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .corp-service-card:hover,
+  .corp-segment-grid article:hover,
+  .corp-principles article:hover,
+  .corp-case-card:hover,
+  .corp-blog-card:hover {
+    border-color: rgba(7, 94, 232, 0.28);
+    box-shadow: 0 22px 48px rgba(9, 35, 67, 0.11);
+    transform: translateY(-5px);
+  }
+
+  .corp-process-grid article:hover {
+    background: rgba(255, 255, 255, 0.055);
+    transform: translateY(-3px);
+  }
+
+  .corp-logo-cloud > div:hover {
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 12px 28px rgba(7, 94, 232, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .corp-client-showcase:hover img { transform: scale(1.012); }
+
+  .corp-accordion article:hover,
+  .corp-accordion article.is-open {
+    border-color: rgba(7, 94, 232, 0.3);
+    box-shadow: 0 10px 28px rgba(9, 35, 67, 0.065);
+  }
+
+  .corp-contact-cards a:hover {
+    box-shadow: 0 12px 28px rgba(9, 35, 67, 0.075);
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @media (max-width: 1080px) {
   .corp-nav { gap: 14px; }
   .corp-nav a { font-size: 10px; }
@@ -2711,11 +2798,15 @@ body {
   }
   .corp-home-hero {
     min-height: 0;
-    background-image: linear-gradient(180deg, rgba(0, 18, 41, 0.2), #00152e 48%, #00152e), url("/hero-fire-restoration-pbclean.png");
-    background-size: auto 410px;
-    background-position: 65% top;
-    background-repeat: no-repeat;
-    background-color: #00152e;
+    background: #00152e;
+  }
+  .corp-home-hero::before {
+    background: linear-gradient(180deg, rgba(0, 18, 41, 0.2), #00152e 48%, #00152e);
+  }
+  .corp-home-hero__background {
+    bottom: auto !important;
+    height: 410px !important;
+    object-position: 65% top;
   }
   .corp-home-hero__inner {
     min-height: 0;
@@ -2879,7 +2970,7 @@ body {
 }
 
 @media (max-width: 380px) {
-  .corp-home-hero { background-size: auto 370px; }
+  .corp-home-hero__background { height: 370px !important; }
   .corp-home-hero__copy { padding-top: 270px; }
   .corp-home-hero h1,
   .corp-page-hero h1,

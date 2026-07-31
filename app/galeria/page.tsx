@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Carousel } from "@/components/ui/3d-carousel";
 import { CtaBand } from "@/components/shared/cta-band";
 import { PageHero } from "@/components/shared/page-hero";
+import { Reveal } from "@/components/shared/reveal";
 import { galleryImages } from "@/data/gallery";
 
 export const metadata: Metadata = {
@@ -20,9 +21,9 @@ export default function GalleryPage() {
         current="Galeria"
       />
       <section className="corp-section">
-        <div className="corp-container">
+        <Reveal className="corp-container">
           <Carousel cards={galleryImages} />
-        </div>
+        </Reveal>
       </section>
       <CtaBand title="Quer transformar seu ambiente também?" />
     </div>

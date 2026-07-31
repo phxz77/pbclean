@@ -5,6 +5,7 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import { cases } from "@/data/cases";
 import { CtaBand } from "@/components/shared/cta-band";
 import { PageHero } from "@/components/shared/page-hero";
+import { StaggerArticle, StaggerGroup } from "@/components/shared/stagger";
 
 export const metadata: Metadata = {
   title: "Cases | PB Clean",
@@ -22,9 +23,9 @@ export default function CasesPage() {
         current="Cases"
       />
       <section className="corp-section">
-        <div className="corp-container corp-case-grid">
+        <StaggerGroup className="corp-container corp-case-grid">
           {cases.map((item) => (
-            <article className="corp-case-card" key={item.slug}>
+            <StaggerArticle className="corp-case-card" key={item.slug}>
               <Link href={`/cases/${item.slug}`} className="corp-case-card__image">
                 <Image src={item.cover} alt={item.title} fill sizes="(max-width: 800px) 100vw, 50vw" />
                 <span>{item.category}</span>
@@ -35,9 +36,9 @@ export default function CasesPage() {
                 <span>{item.excerpt}</span>
                 <Link href={`/cases/${item.slug}`} className="corp-text-link">Ver case completo <ArrowUpRight /></Link>
               </div>
-            </article>
+            </StaggerArticle>
           ))}
-        </div>
+        </StaggerGroup>
       </section>
       <CtaBand />
     </div>

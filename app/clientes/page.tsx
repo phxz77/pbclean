@@ -6,6 +6,7 @@ import { homeContent } from "@/data/home";
 import { CtaBand } from "@/components/shared/cta-band";
 import { PageHero } from "@/components/shared/page-hero";
 import { SectionIntro } from "@/components/shared/section-intro";
+import { Reveal } from "@/components/shared/reveal";
 
 export const metadata: Metadata = {
   title: "Clientes | PB Clean",
@@ -18,7 +19,7 @@ export default function ClientsPage() {
     <div className="corp-site">
       <PageHero {...clientPageContent.hero} current="Clientes" />
       <section className="corp-section">
-        <div className="corp-container">
+        <Reveal className="corp-container">
           <SectionIntro
             centered
             eyebrow="Marcas atendidas"
@@ -33,7 +34,6 @@ export default function ClientsPage() {
                 width={1832}
                 height={862}
                 sizes="(max-width: 840px) 980px, 100vw"
-                priority
               />
             </div>
             <figcaption id="client-list" className="sr-only">
@@ -41,10 +41,10 @@ export default function ClientsPage() {
             </figcaption>
           </figure>
           <p className="corp-client-note">{clientPageContent.note}</p>
-        </div>
+        </Reveal>
       </section>
       <section className="corp-section corp-section--navy">
-        <div className="corp-container corp-client-proof">
+        <Reveal className="corp-container corp-client-proof">
           <div>
             <SectionIntro light eyebrow="Nosso compromisso" title="Uma relação construída com previsibilidade e transparência" />
             <ul>{clientPageContent.criteria.map((item) => <li key={item}><BadgeCheck />{item}</li>)}</ul>
@@ -54,7 +54,7 @@ export default function ClientsPage() {
               <blockquote key={item.author}><p>“{item.quote}”</p><footer><strong>{item.author}</strong><span>{item.role}</span></footer></blockquote>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
       <CtaBand title="Vamos construir uma parceria duradoura?" />
     </div>

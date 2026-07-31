@@ -6,6 +6,9 @@ import { MapPin } from "lucide-react";
 import { cases, getCaseStudy } from "@/data/cases";
 import { BeforeAfter } from "@/components/gallery/before-after";
 import { CtaBand } from "@/components/shared/cta-band";
+import { Reveal } from "@/components/shared/reveal";
+import { AnimatedCounter } from "@/components/shared/animated-counter";
+import { StaggerArticle, StaggerGroup, StaggerItem } from "@/components/shared/stagger";
 
 export function generateStaticParams() {
   return cases.map((item) => ({ slug: item.slug }));
@@ -31,18 +34,18 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
       </section>
       <section className="corp-section">
         <div className="corp-container corp-case-story">
-          <BeforeAfter before={item.images[0]} after={item.images[1]} alt={item.title} />
-          <div className="corp-case-story__metrics">
-            {item.metrics.map((metric) => <div key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></div>)}
-          </div>
-          <div className="corp-case-story__grid">
-            <article><span>01</span><h2>Desafio</h2><p>{item.challenge}</p></article>
-            <article><span>02</span><h2>Solução</h2><p>{item.solution}</p></article>
-            <article><span>03</span><h2>Resultado</h2><p>{item.result}</p></article>
-          </div>
-          <div className="corp-case-story__images">
-            {item.images.map((image, index) => <div key={image}><Image src={image} alt={`${item.title} — imagem ${index + 1}`} fill sizes="50vw" /></div>)}
-          </div>
+          <Reveal><BeforeAfter before={item.images[0]} after={item.images[1]} alt={item.title} /></Reveal>
+          <StaggerGroup className="corp-case-story__metrics">
+            {item.metrics.map((metric) => <StaggerItem key={metric.label}><AnimatedCounter value={metric.value} /><span>{metric.label}</span></StaggerItem>)}
+          </StaggerGroup>
+          <StaggerGroup className="corp-case-story__grid">
+            <StaggerArticle><span>01</span><h2>Desafio</h2><p>{item.challenge}</p></StaggerArticle>
+            <StaggerArticle><span>02</span><h2>Solução</h2><p>{item.solution}</p></StaggerArticle>
+            <StaggerArticle><span>03</span><h2>Resultado</h2><p>{item.result}</p></StaggerArticle>
+          </StaggerGroup>
+          <StaggerGroup className="corp-case-story__images">
+            {item.images.map((image, index) => <StaggerItem key={image}><Image src={image} alt={`${item.title} — imagem ${index + 1}`} fill sizes="50vw" /></StaggerItem>)}
+          </StaggerGroup>
         </div>
       </section>
       <CtaBand title="Seu projeto pode ser o próximo case" />

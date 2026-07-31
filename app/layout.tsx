@@ -3,6 +3,8 @@ import { Manrope } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { FloatingContact } from "@/components/shared/floating-contact";
+import { MotionProvider } from "@/components/shared/motion-provider";
+import "lenis/dist/lenis.css";
 import "@/styles/globals.css";
 
 const manrope = Manrope({
@@ -69,10 +71,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={manrope.variable}>
       <body>
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
-        <FloatingContact />
+        <MotionProvider>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+          <FloatingContact />
+        </MotionProvider>
       </body>
     </html>
   );
