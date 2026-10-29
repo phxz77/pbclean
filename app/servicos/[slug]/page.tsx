@@ -10,6 +10,8 @@ import { ServiceCard } from "@/components/services/service-card";
 import { ContentIcon } from "@/components/shared/content-icon";
 import { CtaBand } from "@/components/shared/cta-band";
 import { Reveal } from "@/components/shared/reveal";
+import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
+import { whatsappUrl } from "@/lib/contact";
 import { StaggerArticle, StaggerGroup, StaggerItem } from "@/components/shared/stagger";
 import { services, getService } from "@/data/services";
 
@@ -43,6 +45,10 @@ export default async function ServiceDetailPage({
   const related = service.related
     .map((relatedSlug) => getService(relatedSlug))
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  const whatsappQuoteMessage = `Olá! Gostaria de um orçamento para ${service.title}.`;
+  const whatsappGalleryMessage = `Olá! Vi a galeria de ${service.title} no site e gostaria de um orçamento.`;
+  const whatsappFaqMessage = `Olá! Tenho dúvidas sobre ${service.title}.`;
 
   return (
     <div className="corp-site">
@@ -81,11 +87,29 @@ export default async function ServiceDetailPage({
             <p className="corp-eyebrow">Benefícios</p>
             <h2>O que este serviço entrega</h2>
             <ul>{service.benefits.map((item) => <li key={item}><BadgeCheck />{item}</li>)}</ul>
+            <a
+              href={whatsappUrl(whatsappQuoteMessage)}
+              target="_blank"
+              rel="noreferrer"
+              className="corp-button corp-button--blue"
+            >
+              <WhatsAppIcon />
+              Solicitar orçamento no WhatsApp
+            </a>
           </div>
           <div>
             <p className="corp-eyebrow">Diferenciais PB Clean</p>
             <h2>Por que contar com especialistas</h2>
             <ul>{service.differentials.map((item) => <li key={item}><BadgeCheck />{item}</li>)}</ul>
+            <a
+              href={whatsappUrl(whatsappQuoteMessage)}
+              target="_blank"
+              rel="noreferrer"
+              className="corp-button corp-button--blue"
+            >
+              <WhatsAppIcon />
+              Falar com especialistas no WhatsApp
+            </a>
           </div>
         </Reveal>
       </section>
@@ -106,6 +130,15 @@ export default async function ServiceDetailPage({
             <p className="corp-eyebrow">Galeria</p>
             <h2>Compare o antes e depois</h2>
             <p>Arraste o controle para visualizar a transformação do ambiente.</p>
+            <a
+              href={whatsappUrl(whatsappGalleryMessage)}
+              target="_blank"
+              rel="noreferrer"
+              className="corp-button corp-button--blue"
+            >
+              <WhatsAppIcon />
+              Quero um orçamento no WhatsApp
+            </a>
           </div>
           <BeforeAfter before={service.gallery[0].before} after={service.gallery[0].after} alt={service.gallery[0].alt} />
         </Reveal>
@@ -113,7 +146,19 @@ export default async function ServiceDetailPage({
 
       <section className="corp-section corp-section--soft">
         <Reveal className="corp-container corp-service-faq">
-          <div><p className="corp-eyebrow">Perguntas frequentes</p><h2>Dúvidas sobre {service.title.toLocaleLowerCase("pt-BR")}</h2></div>
+          <div>
+            <p className="corp-eyebrow">Perguntas frequentes</p>
+            <h2>Dúvidas sobre {service.title.toLocaleLowerCase("pt-BR")}</h2>
+            <a
+              href={whatsappUrl(whatsappFaqMessage)}
+              target="_blank"
+              rel="noreferrer"
+              className="corp-button corp-button--blue"
+            >
+              <WhatsAppIcon />
+              Tirar dúvida no WhatsApp
+            </a>
+          </div>
           <FAQExplorer compact items={service.faq} />
         </Reveal>
       </section>
